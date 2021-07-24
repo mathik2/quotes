@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            font-weight: bolder;
+        }
+        
+        body {
+            background-image: url('/images/horizontal.jpg');
+            background-size: cover;
+            background-repeat: initial;
+        }
+        
+        h1 {
+            color: rgb(23, 218, 169);
+            text-align: center;
+            font-size: 3rem;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        
+        .container {
+            margin-left: 13cm;
+        }
+        
+        .containers {
+            height: 8cm;
+            width: 25cm;
+            text-shadow: 2px 2px 4px rgb(10, 9, 9);
+            margin-top: 25%;
+            text-align: center;
+            font-size: 3rem;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        
+        .btn {
+            margin-left: 25%;
+        }
+        
+        button {
+            padding: 2rem;
+            font-size: 2rem;
+            background-color: palevioletred;
+            color: black;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        
+        a {
+            color: greenyellow;
+        }
+        
+        footer {
+            color: white;
+            text-align: center;
+            font-size: 3rem;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            padding: 0.6cm;
+            margin-top: 6px;
+        }
+        
+        @media only screen and (max-width: 900px) {
+            body {
+                background-image: url('/images/horizontalone.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .btn {
+                margin-left: 15%;
+            }
+            .container {
+                margin-left: 0%;
+                height: 20cm;
+            }
+            .containers {
+                height: 8cm;
+                width: 15cm;
+            }
+            .btn {
+                margin-top: 25%;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            footer {
+                color: white;
+                text-align: center;
+                font-size: 3rem;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                padding: 0.6cm;
+                margin-top: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Enjoy quotes on clicking the buttons belongs to type</h1>
+    <div class="container">
+
+
+        <p class="containers  ">
+
+        </p>
+
+        <div class="btn">
+            <button onclick="quote()" class="button">General</button>
+            <button onclick="cinema()" class="button">cinema</button>
+            <button onclick="advice()" class="button">Advice</button>
+        </div>
+
+
+
+
+    </div>
+    <footer>
+        Any recommendations?<a href="mailto:mathivathanasp@gmail.com">click here</a>
+    </footer>
+
+    <script>
+        const con = document.querySelector('.containers')
+
+        function quote() {
+            fetch('https://api.quotable.io/random')
+                .then(res => res.json())
+                .then(data => {
+                    con.innerHTML = data.content + '<br><br>' + 'By&nbsp;&nbsp;&nbsp;' + data.author;
+
+                    con.style.color = "yellow";
+                    console.log(con.innerHTML)
+                })
+
+        }
+
+        function cinema() {
+            fetch(' https://movie-quote-api.herokuapp.com/v1/quote?censored ')
+                .then(res => res.json())
+                .then(data => {
+
+                    con.innerHTML = data.quote + '<br><br>' + "by&nbsp;&nbsp;" + data.role + '&nbsp;&nbsp;' + 'From&nbsp;&nbsp;&nbsp;' + data.show;
+
+                    con.style.color = "orange";
+                })
+
+        }
+
+        function advice() {
+            fetch('https://api.adviceslip.com/advice')
+                .then(res => res.json())
+                .then(data => {
+                    con.innerHTML = data.slip["advice"];
+                    con.style.color = "white";
+
+                })
+
+        }
+    </script>
+</body>
+
+</html>
