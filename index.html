@@ -9,82 +9,8 @@
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <style>
-        * {
-            font-weight: bolder;
-        }
-        
-        body {
-            background-image: url('/images/horizontal.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-repeat: initial;
-        }
-        
-        h1 {
-            color: rgb(23, 218, 169);
-            text-align: center;
-            font-size: 2rem;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-        
-        .container {
-            height: 8cm;
-            width: 20cm;
-            text-shadow: 2px 2px 4px rgb(10, 9, 9);
-            margin-top: 15%;
-            text-align: center;
-            font-size: 2rem;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-        
-        .button {
-            margin-top: 3rem;
-            border: 2px solid white;
-            border-radius: 10px;
-        }
-        
-        button {
-            padding: 1rem;
-            font-size: 1.5rem;
-            background-color: palevioletred;
-            color: black;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-        
-        a {
-            color: greenyellow;
-        }
-        
-        footer {
-            color: white;
-            text-align: center;
-            font-size: 2rem;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            padding: 0.6cm;
-        }
-        
-        @media only screen and (max-width: 900px) {
-            body {
-                background-image: url('/images/horizontalone.jpg');
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-            p {
-                font-size: 1rem;
-            }
-            .container {
-                height: 12cm;
-                width: 10cm;
-                margin-left: 10%;
-            }
-            footer {
-                font-size: 1.5rem;
-                padding: 0.6cm;
-                margin-top: 2px;
-            }
-        }
-    </style>
+   <link rel="stylesheet" href="quote.css">
+   
 </head>
 
 <body>
@@ -108,43 +34,8 @@
         Any recommendations?<a href="mailto:mathivathanasp@gmail.com">click here</a>
     </footer>
 
-    <script>
-        const con = document.querySelector('.container')
-
-        async function quote() {
-            fetch('https://api.quotable.io/random')
-                .then(res => res.json())
-                .then(data => {
-                    con.innerHTML = data.content + '<br><br>' + 'By&nbsp;&nbsp;&nbsp;' + data.author;
-
-                    con.style.color = "yellow";
-                  
-                })
-
-        }
-
-        function cinema() {
-            fetch(' https://movie-quote-api.herokuapp.com/v1/quote?censored ')
-                .then(res => res.json())
-                .then(data => {
-
-                    con.innerHTML = data.quote + '<br><br>' + "by&nbsp;&nbsp;" + '"' + data.role + '"' + '&nbsp;&nbsp;' + 'From&nbsp;&nbsp;&nbsp;' + data.show;
-
-                    con.style.color = "orange";
-                })
-
-        }
-
-        function advice() {
-            fetch('https://api.adviceslip.com/advice')
-                .then(res => res.json())
-                .then(data => {
-                    con.innerHTML = data.slip["advice"];
-                    con.style.color = "white";
-
-                })
-
-        }
+    <script src="quote.js">
+       
     </script>
 </body>
 
