@@ -10,6 +10,7 @@ body {
 }
 
 h1 {
+    width:100vw;
     background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
     text-align: center;
     font-size: 3rem;
@@ -89,13 +90,16 @@ footer {
         background-repeat: no-repeat;
         background-size: cover;
     }
+    h1{
+        font-size:1.5rem;
+    }
     p {
         font-size: 1rem;
     }
     .container {
         height: 12cm;
-        width: 10cm;
-        margin-left: 10%;
+        width: 100vw;
+       
     }
     footer {
         font-size: 1.5rem;
