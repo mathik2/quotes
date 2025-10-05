@@ -2,7 +2,7 @@
 
 A simple, modern web app that fetches random quotes and advice from public APIs. Built with vanilla HTML/CSS/JS and styled with a clean, responsive UI.
 
-![Screenshot](quotepic.png)
+![Screenshot](quote_pic.png)
 
 ## Features
 - **Two sources**: General quotes and life advice
