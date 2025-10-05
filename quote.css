@@ -1,109 +1,280 @@
+/*
+  Modern stylesheet for Quotes app
+  - Preserves existing selectors and HTML structure
+  - Improves readability, contrast, spacing, and responsiveness
+  - Uses a soft dark theme with subtle glassmorphism
+*/
+
+:root {
+    --bg-image-desktop: url('images/horizontal.jpg');
+    --bg-image-mobile: url('images/horizontalone.jpg');
+
+    --color-bg: #0b0e13;
+    --color-surface: rgba(20, 24, 31, 0.75);
+    --color-surface-strong: rgba(20, 24, 31, 0.9);
+    --color-text: #e8eef6;
+    --color-text-muted: #b7c2d0;
+    --color-accent: #6be675;
+    --color-accent-2: #00d2ff;
+    --color-border: #1f2633;
+
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+}
+
+/* Reset essentials */
 * {
-    font-weight: bolder;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
-    background-image: url('/images/horizontal.jpg');
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-image: var(--bg-image-desktop);
     background-size: cover;
     background-repeat: no-repeat;
-    background-repeat: initial;
+    background-position: center;
+    color: var(--color-text);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.5;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    padding: var(--space-6) var(--space-4);
 }
 
 h1 {
-    width:100vw;
-    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    width: 100%;
     text-align: center;
-    font-size: 3rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    margin: 0 0 var(--space-2);
+    color: var(--color-text);
 }
 
+.subtitle {
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    color: var(--color-text-muted);
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    margin-bottom: var(--space-6);
+}
+
+.quote-section {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.quote-card {
+    background: var(--color-surface);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    color: var(--color-text);
+    min-height: 160px;
+    width: 100%;
+    transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8) var(--space-6);
+}
+
+.quote-card:hover {
+    transform: translateY(-2px);
+    background: var(--color-surface-strong);
+    box-shadow: var(--shadow-md);
+}
+
+/* The quote text container (ID used in JS) */
 .container {
-    height: 8cm;
-    width: 20cm;
-    text-shadow: 2px 2px 4px rgb(10, 9, 9);
-    margin-top: 15%;
+    margin: 0;
     text-align: center;
-    font-size: 2rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-shadow: 2px 2px 5px rgb(19, 18, 18);
+    font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+    color: var(--color-text);
+    min-height: 72px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
 }
 
-
-
-button {
-    padding: 1rem;
-    font-size: 1.5rem;
-    background-color:rgb(255, 0, 117);
-    color: black;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 3rem;
-    border: 2px solid white;
-    border-radius: 10px;
+.placeholder {
+    color: var(--color-text-muted);
+    font-style: italic;
 }
-button:hover{
-    background-color:rgb(119, 217, 112)
+
+#loading {
+    margin-top: var(--space-4);
+}
+
+/* Primary buttons used for category selection */
+.button {
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-2) 100%);
+    color: #0b1220;
+    border: none;
+    box-shadow: var(--shadow-sm);
+    transition: transform 120ms ease, filter 120ms ease, box-shadow 120ms ease;
+    outline: none;
+    border-radius: var(--radius-md);
+    margin: 0 var(--space-2);
+    cursor: pointer;
+}
+
+.button:hover, .button:focus {
+    transform: translateY(-1px);
+    filter: saturate(1.2);
+    box-shadow: 0 8px 20px rgba(0, 210, 255, 0.25);
+}
+
+.d-flex.justify-content-center.mb-3 {
+    margin-bottom: var(--space-6) !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+/* Social links */
+.social-links {
+    gap: var(--space-2);
+    padding-left: 0;
+    margin-bottom: var(--space-6) !important;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.social-links li {
+    display: inline-block;
 }
 
 a {
-    color: greenyellow;
+    color: var(--color-accent);
     text-decoration: none;
-}
-.fa {
-    padding: 20px;
-    font-size: 30px;
-    width: 80px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
-    border-radius: 50%;
-  }
-  
-  .fa:hover {
-      opacity: 0.7;
-  }
-  
-  .fa-facebook {
-    background: #3B5998;
-    color: white;
-  }
-  
-  .fa-twitter {
-    background: #55ACEE;
-    color: white;
-  }
-  .fa-instagram {
-    background: #e72274;
-    color: white;
-  }
-  
-footer {
-    color: white;
-    text-align: center;
-    font-size: 2rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding: 0.6cm;
+    transition: color 120ms ease;
 }
 
-@media only screen and (max-width: 900px) {
+a:hover, a:focus {
+    color: var(--color-accent-2);
+    text-decoration: underline;
+}
+
+.fa {
+    font-size: 20px;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    vertical-align: middle;
+    margin: 4px 6px;
+    border-radius: 50%;
+    background: #1c2330;
+    color: #e9f2ff;
+    transition: transform 120ms ease, filter 120ms ease, opacity 120ms ease;
+    display: inline-block;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.fa-facebook { background: #3b5998; }
+.fa-twitter { background: #1da1f2; }
+.fa-linkedin { background: #0077b5; }
+.fa-instagram { background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+
+.fa:hover {
+    transform: translateY(-1px) scale(1.03);
+    opacity: 0.95;
+}
+
+footer {
+    color: var(--color-text);
+    text-align: center;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    padding: 0.9rem;
+    background: rgba(10, 12, 18, 0.7);
+    margin-top: auto;
+    border-top: 1px solid var(--color-border);
+    letter-spacing: 0.2px;
+    width: 100vw;
+}
+
+/* Quote text and author separation */
+.quote-content {
+    display: block;
+}
+
+.quote-author {
+    display: block;
+    margin-top: 0.6rem;
+    color: var(--color-accent-2);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    opacity: 0.95;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
     body {
-        background-image: url('/images/horizontalone.jpg');
+        background-image: var(--bg-image-mobile);
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center;
     }
-    h1{
-        font-size:1.5rem;
+    .main-content {
+        padding: var(--space-6) var(--space-4);
     }
-    p {
-        font-size: 1rem;
+    .quote-section {
+        max-width: 96vw;
     }
     .container {
-        height: 12cm;
-        width: 100vw;
-       
+        min-height: 56px;
+        padding: var(--space-3);
     }
-    footer {
-        font-size: 1.5rem;
-        padding: 0.6cm;
-        margin-top: 2px;
+    .quote-card {
+        padding: var(--space-6) var(--space-4);
+        min-height: 120px;
+        max-width: 96vw;
+    }
+    .button {
+        font-size: 0.95rem;
+        padding: 0.8rem 1.2rem;
     }
 }
