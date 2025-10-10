@@ -2,7 +2,7 @@
 
 A simple, modern web app that fetches random quotes and advice from public APIs. Built with vanilla HTML/CSS/JS and styled with a clean, responsive UI.
 
-![Screenshot](quotepic.png)
+![Screenshot](quote_pic.png)
 
 ## Features
 - **Two sources**: General quotes and life advice
@@ -68,10 +68,3 @@ quotes-main/
   - Endpoint used: `https://api.quotable.io/random`
 - Advice Slip (random advice): [Advice Slip API](https://api.adviceslip.com/)
   - Endpoint used: `https://api.adviceslip.com/advice`
-
-Both are free and unauthenticated as of writing. Check their docs for rate limits or changes.
-
-## Acknowledgements
-- [Quotable API](https://github.com/lukePeavey/quotable)
-- [Advice Slip API](https://api.adviceslip.com/)
-- [Bootstrap](https://getbootstrap.com/) and [Font Awesome](https://fontawesome.com/)
