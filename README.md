@@ -71,43 +71,6 @@ quotes-main/
 
 Both are free and unauthenticated as of writing. Check their docs for rate limits or changes.
 
-## Customization
-- **Colors and theme**: Edit CSS variables in `quote.css` under `:root` to adjust background, text, and accent colors.
-- **Background images**: Replace `images/horizontal.jpg` and `images/horizontalone.jpg` with your assets; paths are defined via CSS variables.
-- **Buttons and spacing**: Adjust `.button` and spacing variables for your brand.
-- **Author style**: Tweak `.quote-author` in `quote.css` to change size, color, or alignment.
-
-Example: right-align the author
-```css
-.quote-author {
-    text-align: right;
-    opacity: 0.9;
-}
-```
-
-## Accessibility
-- Uses sufficient color contrast for text on dark backgrounds.
-- Focus states are enabled via hover/focus styles.
-- Loading indicator has an accessible label via Bootstrap's visually hidden text.
-
-## Deployment
-Any static hosting works:
-- GitHub Pages
-- Netlify
-- Vercel
-- Cloudflare Pages
-
-Typical steps (GitHub Pages example):
-1. Push to a public GitHub repo.
-2. In repo settings → Pages, set the branch to `main` (or `master`) and folder to `/quotes-main`.
-3. Wait for the site to build and use the provided URL.
-
-## Contributing
-Contributions are welcome! Feel free to open issues or PRs for fixes, improvements, or new features.
-
-## License
-This project is open source under the MIT License. You can replace this section with another license as needed.
-
 ## Acknowledgements
 - [Quotable API](https://github.com/lukePeavey/quotable)
 - [Advice Slip API](https://api.adviceslip.com/)
